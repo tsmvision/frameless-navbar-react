@@ -7,50 +7,51 @@ import "./App.scss";
 const MENU_LEVEL = {
   FIRST: "first",
   SECOND: "second",
+  THIRD: "third",
 };
 
 const App = () => {
-  const [firstLevelMenu, setFirstLevelMenu] = useState({
-    id: "",
-    isOpen: false,
+  const [menu, setMenu] = useState({
+    firstId: "",
+    firstIsOpen: false,
+    secondId: "",
+    secondIsOpen: false,
+    thirdId: "",
+    thirdIsOpen: "",
   });
 
-  const [secondLevelMenu, setSecondLevelMenu] = useState({
-    id: "",
-    isOpen: false,
-  });
-
-  const flushState = (level) => {
+  const openMenu = (name, level) => {
+    console.log(name);
+    const { firstId, firstIsOpen, secondId, secondIsOpen } = menu;
     switch (level) {
       case MENU_LEVEL.FIRST:
-        setFirstLevelMenu({
-          id: "",
-          isOpen: false,
+        setMenu({
+          firstId: name,
+          firstIsOpen: true,
+          secondId: "",
+          secondIsOpen: false,
+          thirdId: "",
+          thirdIsOpen: false,
         });
         break;
       case MENU_LEVEL.SECOND:
-        setSecondLevelMenu({
-          id: "",
-          isOpen: false,
+        setMenu({
+          firstId,
+          firstIsOpen,
+          secondId: name || "",
+          secondIsOpen: true,
+          thirdId: "",
+          thirdIsOpen: false,
         });
         break;
-      default:
-        break;
-    }
-  };
-
-  const openMenu = (e, level) => {
-    switch (level) {
-      case MENU_LEVEL.FIRST:
-        setFirstLevelMenu({
-          id: e.target.name,
-          isOpen: true,
-        });
-        break;
-      case MENU_LEVEL.SECOND:
-        setSecondLevelMenu({
-          id: e.target.name,
-          isOpen: true,
+      case MENU_LEVEL.THIRD:
+        setMenu({
+          firstId,
+          firstIsOpen,
+          secondId,
+          secondIsOpen,
+          thirdId: name || "",
+          thirdIsOpen: true,
         });
         break;
       default:
@@ -61,11 +62,34 @@ const App = () => {
   const closeMenu = (level) => {
     switch (level) {
       case MENU_LEVEL.FIRST:
-        flushState(MENU_LEVEL.FIRST);
-        flushState(MENU_LEVEL.SECOND);
+        setMenu({
+          firstId: "",
+          firstIsOpen: false,
+          secondId: "",
+          secondIsOpen: false,
+          thirdId: "",
+          thirdIsOpen: "",
+        });
         break;
       case MENU_LEVEL.SECOND:
-        flushState(MENU_LEVEL.SECOND);
+        setMenu({
+          firstId: menu.firstId || "",
+          firstIsOpen: menu.firstIsOpen,
+          secondId: "",
+          secondIsOpen: false,
+          thirdId: "",
+          thirdIsOpen: false,
+        });
+        break;
+      case MENU_LEVEL.SECOND:
+        setMenu({
+          firstId: menu.firstId || "",
+          firstIsOpen: menu.firstIsOpen,
+          secondId: menu.secondId,
+          secondIsOpen: menu.secondIsOpen,
+          thirdId: "",
+          thirdIsOpen: false,
+        });
         break;
       default:
         break;
@@ -73,7 +97,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log(firstLevelMenu, secondLevelMenu);
+    console.log(menu);
   });
 
   return (
@@ -86,33 +110,54 @@ const App = () => {
           <a href="#">Services</a>
         </li>
         <li
-          name="offices"
-          onMouseEnter={(e) => openMenu(e, "first")}
-          onMouseLeave={() => closeMenu("first")}
+          onMouseEnter={(e) => openMenu("offices", MENU_LEVEL.FIRST)}
+          onMouseLeave={() => closeMenu(MENU_LEVEL.FIRST)}
         >
-          <a href="#" name="offices">
-            Offices
-          </a>
-          {firstLevelMenu.id === "offices" && firstLevelMenu.isOpen && (
-            <ul class="second-level-menu" id="offices">
+          <a href="#">Offices</a>
+          {menu.firstId === "offices" && menu.firstIsOpen && (
+            <ul class="second-level-menu">
               <li>
                 <a href="#">Chicago</a>
               </li>
               <li
                 name="losAngeles"
-                onMouseEnter={(e) => openMenu(e, MENU_LEVEL.SECOND)}
-                onMouseLeavel={() => closeMenu(MENU_LEVEL.SECOND)}
+                onMouseEnter={(e) => openMenu("losAngeles", MENU_LEVEL.SECOND)}
+                onMouseLeave={() => closeMenu(MENU_LEVEL.SECOND)}
               >
                 <a href="#" name="losAngeles">
                   Los Angeles
                 </a>
-                {secondLevelMenu.id === "losAngeles" && secondLevelMenu.isOpen && (
+                {menu.secondId === "losAngeles" && menu.secondIsOpen && (
                   <ul class="third-level-menu">
                     <li>
                       <a href="#">!!!Information</a>
                     </li>
-                    <li>
-                      <a href="#">!!!Book a Meeting</a>
+                    <li
+                      name="meeting"
+                      onMouseEnter={(e) =>
+                        openMenu("meeting", MENU_LEVEL.THIRD)
+                      }
+                      onMouseLeave={() => closeMenu(MENU_LEVEL.THIRD)}
+                    >
+                      <a href="#" name="meeting">
+                        meeting
+                      </a>
+                      {menu.thirdId === "meeting" && menu.thirdIsOpen && (
+                        <ul class="fourth-level-menu">
+                          <li>
+                            <a href="#">fourth1</a>
+                          </li>
+                          <li>
+                            <a href="#">fourth2</a>
+                          </li>
+                          <li>
+                            <a href="#">fourth3</a>
+                          </li>
+                          <li>
+                            <a href="#">fourth4</a>
+                          </li>
+                        </ul>
+                      )}
                     </li>
                     <li>
                       <a href="#">!!!Testimonials</a>
@@ -124,14 +169,13 @@ const App = () => {
                 )}
               </li>
               <li
-                name="newYork"
-                onMouseEnter={(e) => openMenu(e, MENU_LEVEL.SECOND)}
-                onMouseLeavel={() => closeMenu(MENU_LEVEL.SECOND)}
+                onMouseEnter={(e) => openMenu("newYork", MENU_LEVEL.SECOND)}
+                onMouseLeave={() => closeMenu(MENU_LEVEL.SECOND)}
               >
                 <a href="#" name="newYork">
                   New York
                 </a>
-                {secondLevelMenu.id === "newYork" && secondLevelMenu.isOpen && (
+                {menu.secondId === "newYork" && menu.secondIsOpen && (
                   <ul class="third-level-menu">
                     <li>
                       <a href="#">Information</a>

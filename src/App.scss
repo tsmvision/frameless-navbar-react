@@ -64,6 +64,22 @@
         
                 &:hover { background: #CCCCCC; }
             }
+
+            .fourth-level-menu {
+                position: absolute;
+                top: 0;
+                right: -150px;
+                width: 150px;
+                padding: 0;
+                margin: 0;
+            
+                li {
+                    height: 30px;
+                    background: #999999;
+            
+                    &:hover { background: #CCCCCC; }
+                }
+            }
         }
     }
 }
