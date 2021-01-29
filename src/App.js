@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // open/closing menu using css
 // import "./App-css.scss";
 // open/close menu using Javascript/React
-import "./App-js.scss";
+import "./App.scss";
 
 const MENU_LEVEL = {
   FIRST: "first",
@@ -60,15 +60,12 @@ const App = () => {
 
   const closeMenu = (level) => {
     switch (level) {
-      case "first":
-        flushState("first");
-        flushState("second");
+      case MENU_LEVEL.FIRST:
+        flushState(MENU_LEVEL.FIRST);
+        flushState(MENU_LEVEL.SECOND);
         break;
-      case "second":
-        setSecondLevelMenu({
-          id: "",
-          isOpen: false,
-        });
+      case MENU_LEVEL.SECOND:
+        flushState(MENU_LEVEL.SECOND);
         break;
       default:
         break;
@@ -106,8 +103,8 @@ const App = () => {
               </li>
               <li
                 name="newYork"
-                onMouseEnter={(e) => openMenu(e, "second")}
-                onMouseLeavel={() => closeMenu("second")}
+                onMouseEnter={(e) => openMenu(e, MENU_LEVEL.SECOND)}
+                onMouseLeavel={() => closeMenu(MENU_LEVEL.SECOND)}
               >
                 <a href="#" name="newYork">
                   New York
