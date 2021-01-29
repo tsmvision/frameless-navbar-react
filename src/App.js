@@ -98,8 +98,30 @@ const App = () => {
               <li>
                 <a href="#">Chicago</a>
               </li>
-              <li>
-                <a href="#">Los Angeles</a>
+              <li
+                name="losAngeles"
+                onMouseEnter={(e) => openMenu(e, MENU_LEVEL.SECOND)}
+                onMouseLeavel={() => closeMenu(MENU_LEVEL.SECOND)}
+              >
+                <a href="#" name="losAngeles">
+                  Los Angeles
+                </a>
+                {secondLevelMenu.id === "losAngeles" && secondLevelMenu.isOpen && (
+                  <ul class="third-level-menu">
+                    <li>
+                      <a href="#">!!!Information</a>
+                    </li>
+                    <li>
+                      <a href="#">!!!Book a Meeting</a>
+                    </li>
+                    <li>
+                      <a href="#">!!!Testimonials</a>
+                    </li>
+                    <li>
+                      <a href="#">!!!Jobs</a>
+                    </li>
+                  </ul>
+                )}
               </li>
               <li
                 name="newYork"
