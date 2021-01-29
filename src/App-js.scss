@@ -1,0 +1,81 @@
+// display second and third level menu using css/scss
+.top-level-menu {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+
+    li {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 30px;
+        width: 150px;
+        background: #999999;
+
+        &:hover { 
+            background: #CCCCCC; 
+        }
+
+        /* Menu Link Styles */
+        /* Apply to all links inside the multi-level menu */
+        a {
+            font: bold 14px Arial, Helvetica, sans-serif;
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 0 0 0 10px;
+            /* Make the link cover the entire list item-container */
+            display: block;
+            line-height: 30px;
+
+            &:hover { 
+                color: #000000; 
+            }
+        }
+    }
+
+    .second-level-menu {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        width: 150px;
+        padding: 0;
+        margin: 0;
+        // display: none;
+    
+        li {
+            position: relative;
+            height: 30px;
+            background: #999999;
+    
+            &:hover { 
+                background: #CCCCCC;
+            }
+        }
+
+        .third-level-menu {
+            position: absolute;
+            top: 0;
+            right: -150px;
+            width: 150px;
+            padding: 0;
+            margin: 0;
+            // display: none;
+        
+            li {
+                height: 30px;
+                background: #999999;
+        
+                &:hover { background: #CCCCCC; }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
