@@ -1,89 +1,89 @@
 .top-level-menu {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+
+  li {
+    position: relative;
     display: flex;
-    flex-direction: row;
+    height: 30px;
+    width: 150px;
+    background: #999999;
 
-    li {
-        position: relative;
-        display: flex;
-        height: 30px;
-        width: 150px;
-        background: #999999;
+    &:hover {
+      background: #cccccc;
+    }
 
-        &:hover { 
-            background: #CCCCCC; 
-        }
+    /* Menu Link Styles */
+    /* Apply to all links inside the multi-level menu */
+    a {
+      font: bold 14px Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0 0 0 10px;
+      /* Make the link cover the entire list item-container */
+      display: block;
+      line-height: 30px;
 
-        /* Menu Link Styles */
-        /* Apply to all links inside the multi-level menu */
-        a {
-            font: bold 14px Arial, Helvetica, sans-serif;
-            color: #FFFFFF;
-            text-decoration: none;
-            padding: 0 0 0 10px;
-            /* Make the link cover the entire list item-container */
-            display: block;
-            line-height: 30px;
-
-            &:hover { 
-                color: #000000; 
-            }
-        }
+      &:hover {
+        color: #000000;
+      }
     }
 
     .second-level-menu {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: 150px;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        height: 30px;
+        background: #999999;
+
+        &:hover {
+          background: #cccccc;
+        }
+      }
+
+      .third-level-menu {
         position: absolute;
-        top: 30px;
-        left: 0;
+        top: 0;
+        right: -150px;
         width: 150px;
         padding: 0;
         margin: 0;
-    
+
         li {
-            position: relative;
+          height: 30px;
+          background: #999999;
+
+          &:hover {
+            background: #cccccc;
+          }
+        }
+
+        .fourth-level-menu {
+          position: absolute;
+          top: 0;
+          right: -150px;
+          width: 150px;
+          padding: 0;
+          margin: 0;
+
+          li {
             height: 30px;
             background: #999999;
-    
-            &:hover { 
-                background: #CCCCCC;
-            }
-        }
 
-        .third-level-menu {
-            position: absolute;
-            top: 0;
-            right: -150px;
-            width: 150px;
-            padding: 0;
-            margin: 0;
-        
-            li {
-                height: 30px;
-                background: #999999;
-        
-                &:hover { background: #CCCCCC; }
+            &:hover {
+              background: #cccccc;
             }
-
-            .fourth-level-menu {
-                position: absolute;
-                top: 0;
-                right: -150px;
-                width: 150px;
-                padding: 0;
-                margin: 0;
-            
-                li {
-                    height: 30px;
-                    background: #999999;
-            
-                    &:hover { background: #CCCCCC; }
-                }
-            }
+          }
         }
+      }
     }
+  }
 }
-
-
-
-
