@@ -116,45 +116,6 @@ const App = () => {
     thirdIsOpen: false,
   });
 
-  // const openMenu = (name: string, level: string) => {
-  //   console.log(name);
-  //   const { firstId, firstIsOpen, secondId, secondIsOpen } = menu;
-  //   switch (level) {
-  //     case MENU_LEVEL.FIRST:
-  //       setMenu({
-  //         firstId: name,
-  //         firstIsOpen: true,
-  //         secondId: "",
-  //         secondIsOpen: false,
-  //         thirdId: "",
-  //         thirdIsOpen: false,
-  //       });
-  //       break;
-  //     case MENU_LEVEL.SECOND:
-  //       setMenu({
-  //         firstId,
-  //         firstIsOpen,
-  //         secondId: name || "",
-  //         secondIsOpen: true,
-  //         thirdId: "",
-  //         thirdIsOpen: false,
-  //       });
-  //       break;
-  //     case MENU_LEVEL.THIRD:
-  //       setMenu({
-  //         firstId,
-  //         firstIsOpen,
-  //         secondId,
-  //         secondIsOpen,
-  //         thirdId: name || "",
-  //         thirdIsOpen: true,
-  //       });
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
-
   const openMenu = (name: string, level: string) => {
     const {
       firstId,
@@ -188,43 +149,6 @@ const App = () => {
       })
     );
   };
-
-  // const closeMenu = (level: string) => {
-  //   switch (level) {
-  //     case MENU_LEVEL.FIRST:
-  //       setMenu({
-  //         firstId: "",
-  //         firstIsOpen: false,
-  //         secondId: "",
-  //         secondIsOpen: false,
-  //         thirdId: "",
-  //         thirdIsOpen: false,
-  //       });
-  //       break;
-  //     case MENU_LEVEL.SECOND:
-  //       setMenu({
-  //         firstId: menu.firstId || "",
-  //         firstIsOpen: menu.firstIsOpen,
-  //         secondId: "",
-  //         secondIsOpen: false,
-  //         thirdId: "",
-  //         thirdIsOpen: false,
-  //       });
-  //       break;
-  //     case MENU_LEVEL.THIRD:
-  //       setMenu({
-  //         firstId: menu.firstId || "",
-  //         firstIsOpen: menu.firstIsOpen,
-  //         secondId: menu.secondId,
-  //         secondIsOpen: menu.secondIsOpen,
-  //         thirdId: "",
-  //         thirdIsOpen: false,
-  //       });
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
 
   useEffect(() => {
     // console.log(menu: any);
